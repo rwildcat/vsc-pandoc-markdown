@@ -1,0 +1,80 @@
+{
+	"name": "pandoc-markdown",
+	"displayName": "Pandoc Markdown",
+	"description": "A VS Code extension for writing Markdown documents using Pandoc. Output format is HTML. In-app real time visualization is provided.",
+	"version": "0.0.1",
+	"engines": {
+		"vscode": "^1.57.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onCommand:extension.pandoc-markdown.openPreview",
+		"onCommand:extension.pandoc-markdown.exportHTML"
+	],
+	"main": "./out/extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "extension.pandoc-markdown.openPreview",
+				"title": "Pandoc Markdown: Open Preview",
+				"when": "editorLangId == markdown"
+			},
+			{
+				"command": "extension.pandoc-markdown.exportHTML",
+				"title": "Pandoc Markdown: Export to HTML",
+				"when": "editorLangId == markdown"
+			}
+		],
+		"keybindings": [
+			{
+				"command": "extension.pandoc-markdown.openPreview",
+				"key": "shift+ctrl+r",
+				"mac": "shift+cmd+r",
+				"when": "editorTextFocus && editorLangId == markdown"
+			}
+		],
+		"configuration": {
+			"title": "Pandoc Markdown",
+			"properties": {
+				"pandocMd.ArticleStyle": {
+					"type": "boolean",
+					"default": true,
+					"description": "Use the Article style `article.css`"
+				},
+				"pandocMd.minimumWaitInterval": {
+					"type": "number",
+					"default": 750,
+					"description": "The minimum amount of time (in milliseconds) to wait after a pandoc subprocess exits before starting a new one."
+				},
+				"pandocMd.extraPandocArguments": {
+					"type": "string",
+					"default": "",
+					"description": "Extra command-line arguments to use when invoking pandoc. Arguments should be separated with spaces. This string isn't escaped in any way before being passed to the shell, so be careful!"
+				}
+			}
+		}
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"pretest": "npm run compile && npm run lint",
+		"lint": "eslint src --ext ts",
+		"test": "node ./out/test/runTest.js"
+	},
+	"devDependencies": {
+		"@types/vscode": "^1.57.0",
+		"@types/glob": "^7.1.3",
+		"@types/mocha": "^8.2.2",
+		"@types/node": "14.x",
+		"eslint": "^7.27.0",
+		"@typescript-eslint/eslint-plugin": "^4.26.0",
+		"@typescript-eslint/parser": "^4.26.0",
+		"glob": "^7.1.7",
+		"mocha": "^8.4.0",
+		"typescript": "^4.3.2",
+		"vscode-test": "^1.5.2"
+	}
+}

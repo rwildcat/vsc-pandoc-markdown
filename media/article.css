@@ -1,0 +1,149 @@
+<style>
+
+/* ---
+ * article.css - A beautiful css to complement Pandoc's own
+ *
+ * Provides:
+ *    - Article-style title and headers
+ *    - Images and tables centered
+ *    - New `<aside>` env (right side)
+ *
+ * Ramon Solano <ramon.solano@gmail.com>
+ *
+ * usage: 
+ *    pandoc ... -H article.css ...
+ * 
+ * V1.0, Jul/2021
+ * ---
+ */
+
+body {
+	max-width: 40em;
+   word-wrap: break-word; 
+}
+
+header p {
+	text-align: center;
+}
+header p.subtitle {
+	font-size: 1.2em;
+	line-height: 1.1em;
+	margin: 0.5em 2em 2em;
+/* 
+	 margin-top: 0.5em;
+	 margin-bottom: 2em;
+ */
+}
+	header p.author {
+	font-size: 1.1em;
+	line-height: 0.5em;
+	font-variant-caps: small-caps;
+}
+header p.date {
+	font-size: 0.95em;
+	margin: 3em;
+}
+
+header h1 {
+	 line-height: 1em;
+	 margin-bottom: 0em;
+}
+/* abstract header */
+h3:first-child, #abstract {
+	font-size: 1.2em;
+	text-align: center;
+	margin: 0.5em ;
+}
+
+/* abstract paragraph */
+h3:first-child + p, #abstract + p {
+	font-size: 0.9em;
+	margin: 0em 4em;
+	margin-bottom: 3em;
+}
+
+
+h1 {
+  font-size: 1.6em;
+}
+h2 {
+  font-size: 1.3em;
+}
+h3 {
+  font-size: 1.1em;
+  font-style: italic;
+}
+h1, h2, h3, h4 {
+  margin-top: 0.95em;
+  margin-bottom: 0.80em;
+}
+
+/* Justify and hyphenate all paragraphs */
+p {
+  text-align: justify;
+}
+
+/* center tables */
+table {
+	display: table;
+	width: auto;
+	margin-left: auto;
+	margin-right: auto;
+}
+table caption {
+	font-size: 0.95em;
+}
+
+/* centered figures  */
+figure {
+  text-align: center;
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
+figcaption {
+  font-size: 0.95em;
+}
+
+/* lists: increase left margins */
+ul, ol {
+  padding: 0 0 0 3em;
+}    
+
+/* new style: objects (figures, text) right side */
+aside {
+  font-size: 0.9em;
+  width: 33%;
+  padding: 0 0 0 .8em;
+  margin: 1em 0 1em 1em;
+  float: right;
+}
+aside > *:first-child {
+  margin-top: 0;
+}
+aside > *:last-child {
+  margin-bottom: 0;
+}
+
+pre {
+  font-size: .95em;
+  line-height: 1.2em;
+  border: 1px solid #cccccc;
+  background: #f5f2f0;
+  padding: .7em;   
+}
+
+:not(pre) > code[class*="sourceCode"],
+pre[class*="sourceCode"] {
+	background: #f5f2f0;
+}
+
+code {
+   color: #92000c;
+}
+
+pre code {
+  color: unset;
+}
+
+
+</style>

@@ -1,0 +1,32 @@
+<style>
+
+/* ---
+ * fixDefault.css - A fix to default Pandoc's CSS to be 
+ *    correctly displayed on a VS Code preview window,
+ *    and nicely printed on [digital] paper
+ *
+ * Ramon Solano <ramon.solano@gmail.com>
+ *
+ * usage: 
+ *    pandoc ... -H fixDefault.css ...
+ *
+ * V 1.0, Jul/2021
+ * --- 
+ */
+
+body {
+	font-family: inherit;
+	font-size: inherit;
+	color: inherit;
+}
+
+@media print {
+	html,body {
+		font-size: 10pt;
+	}
+	@page  {  
+		size: auto;
+	} 
+}
+
+</style>
