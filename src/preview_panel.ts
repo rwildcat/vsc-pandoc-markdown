@@ -1,7 +1,7 @@
 import * as vscode from 'vscode';
 import * as path from 'path';
-import * as fs from 'fs';
 import {exec, ChildProcess, ExecOptions} from 'child_process';
+
 
 /* implements vscode.Disposable */
 export default class PandocMDPreviewPanel {
@@ -129,7 +129,11 @@ export default class PandocMDPreviewPanel {
 		
 		// get current editor contents and send it to pandoc as stdin
 		// when invoqued w/o input file, pandoc wats for stdin input
+
+		// @ts-ignore: Object is possibly 'null'.
 		this.subprocess.stdin.write(this.editor.document.getText());
+
+		// @ts-ignore: Object is possibly 'null'.
 		this.subprocess.stdin.end();
 	}
 
@@ -149,7 +153,11 @@ export default class PandocMDPreviewPanel {
 		
 		// get current editor contents and send it to pandoc as stdin
 		// when invoqued w/o input file, pandoc wats for stdin input
+
+		// @ts-ignore: Object is possibly 'null'.
 		this.subprocess.stdin.write(this.editor.document.getText());
+
+		// @ts-ignore: Object is possibly 'null'.
 		this.subprocess.stdin.end();
 	}
 

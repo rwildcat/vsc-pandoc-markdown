@@ -16,6 +16,7 @@ function exportHTML() {
 	if (!panel) {
 		openPandocMd();
 	}
+	// @ts-ignore: Object is possibly 'null'.
 	panel.exportHTML();
 }
 
