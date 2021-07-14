@@ -29,6 +29,10 @@ This extension contributes the following settings:
 * `minimumWaitInterval`: (number; default: 750) - The minimum amount of time (in milliseconds) to wait after a pandoc subprocess exits before starting a new one
 * `extraPandocArguments`:(string) - Extra command-line arguments to use when invoking pandoc. Arguments should be separated with spaces
 
+## Preview
+
+![demo](./demo.mp4)
+
 ## Known Issues
 
 * TBD
@@ -51,9 +55,17 @@ The *Article* style was inspired by [Tufte CSS] by Dave Liepmann.
 
 To fully take advantege of the extended Pandoc Markdown version, please see the [Pandoc User’s Guide], especially the [extensions] section and of course the specific [Pandoc’s Markdown] section.
 
+
+## References
+
+* Pandoc: https://pandoc.org
+* Pandoc Markdown Preview: https://marketplace.visualstudio.com/items?itemName=kzvi.pandoc-markdown-preview
+* Pandoc User’s Guide: https://pandoc.org/MANUAL.html
+* extensions: https://pandoc.org/MANUAL.html#extensions
+* Pandoc’s Markdown: https://pandoc.org/MANUAL.html#pandocs-markdown
+* Tufte CSS: https://edwardtufte.github.io/tufte-css/
+
 **Enjoy!**
-
-
 
 
 [Pandoc]: https://pandoc.org
