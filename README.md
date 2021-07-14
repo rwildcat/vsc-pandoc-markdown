@@ -31,7 +31,7 @@ This extension contributes the following settings:
 
 ## Preview
 
-![demo](./demo.mp4)
+[![demo](./demo.png)](./demo.mp4)
 
 ## Known Issues
 
