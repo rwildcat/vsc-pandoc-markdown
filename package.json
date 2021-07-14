@@ -2,7 +2,8 @@
 	"name": "pandoc-markdown",
 	"displayName": "Pandoc Markdown",
 	"description": "A VS Code extension for writing Markdown documents using Pandoc. Output format is HTML. In-app real time visualization is provided.",
-	"version": "0.0.1",
+	"icon": "./markdown.png",
+	"version": "0.1.0",
 	"engines": {
 		"vscode": "^1.57.0"
 	},

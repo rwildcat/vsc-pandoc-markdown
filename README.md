@@ -44,9 +44,13 @@ This extension is based on the [Pandoc Markdown Preview] extension by kzvi. Unfo
 
 The *Article* style was inspired by [Tufte CSS] by Dave Liepmann.
 
+[Markdown](https://icons8.com/icon/50145/markdown) icon by [Icons8](https://icons8.com).
+
+Thanks!
+
 ## Releases
 
-* **1.0.0**, Jul/13/21
+* **0.1.0**, Jul/13/21
 
    Initial release
 
