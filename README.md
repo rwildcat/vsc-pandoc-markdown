@@ -31,15 +31,16 @@ This extension contributes the following settings:
 
 ## Preview
 
-[![demo](./demo.png)](./demo.mp4)
+![vide](intro.gif)
 
 ## Known Issues
+
 
 * TBD
 
 ## Acknowledgements
 
-This extension is based on the [Pandoc Markdown Preview] extension by kzvi. Unfortunately, it appears to be outdated and with some issues, such as a fixed CSS style and error accessing local media from the rendered preview.
+This extension is based on the [Pandoc Markdown Preview] extension by kzvi. Unfortunately, it appears to be outdated and with some issues, such as error accessing local media from the rendered preview.
 
 The *Article* style was inspired by [Tufte CSS] by Dave Liepmann.
 
@@ -58,19 +59,19 @@ To fully take advantege of the extended Pandoc Markdown version, please see the 
 
 ## References
 
-* Pandoc: https://pandoc.org
-* Pandoc Markdown Preview: https://marketplace.visualstudio.com/items?itemName=kzvi.pandoc-markdown-preview
-* Pandoc User’s Guide: https://pandoc.org/MANUAL.html
-* extensions: https://pandoc.org/MANUAL.html#extensions
-* Pandoc’s Markdown: https://pandoc.org/MANUAL.html#pandocs-markdown
-* Tufte CSS: https://edwardtufte.github.io/tufte-css/
+* Pandoc: <https://pandoc.org>
+* Pandoc Markdown Preview: <https://marketplace.visualstudio.com/items?itemName=kzvi.pandoc-markdown-preview>
+* Pandoc User’s Guide: <https://pandoc.org/MANUAL.html>
+* extensions: <https://pandoc.org/MANUAL.html#extensions>
+* Pandoc’s Markdown: <https://pandoc.org/MANUAL.html#pandocs-markdown>
+* Tufte CSS: <https://edwardtufte.github.io/tufte-css/>
 
 **Enjoy!**
 
 
-[Pandoc]: https://pandoc.org
-[Pandoc Markdown Preview]: https://marketplace.visualstudio.com/items?itemName=kzvi.pandoc-markdown-preview
-[Pandoc User’s Guide]: https://pandoc.org/MANUAL.html
-[extensions]: https://pandoc.org/MANUAL.html#extensions
-[Pandoc’s Markdown]: https://pandoc.org/MANUAL.html#pandocs-markdown
-[Tufte CSS]: https://edwardtufte.github.io/tufte-css/
+[Pandoc]: <https://pandoc.org>
+[Pandoc Markdown Preview]: <https://marketplace.visualstudio.com/items?itemName=kzvi.pandoc-markdown-preview>
+[Pandoc User’s Guide]: <https://pandoc.org/MANUAL.html>
+[extensions]: <https://pandoc.org/MANUAL.html#extensions>
+[Pandoc’s Markdown]: <https://pandoc.org/MANUAL.html#pandocs-markdown>
+[Tufte CSS]: <https://edwardtufte.github.io/tufte-css/>
