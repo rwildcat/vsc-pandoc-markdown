@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Dr Taz" />
+  <meta name="keywords" content="Markdown, Pandoc, VSCode" />
+  <title>Pandoc Markdown</title>
+  <style>
+    html {
+      line-height: 1.5;
+      font-family: Palatino, Georgia, Times, Arial;
+      font-size: 11.5pt;
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      word-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 1em;
+      }
+    }
+    @media print {
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-size: 85%;
+      margin: 0;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+    }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+   var mathElements = document.getElementsByClassName("math");
+   var macros = [];
+   for (var i = 0; i < mathElements.length; i++) {
+    var texText = mathElements[i].firstChild;
+    if (mathElements[i].tagName == "SPAN") {
+     katex.render(texText.data, mathElements[i], {
+      displayMode: mathElements[i].classList.contains('display'),
+      throwOnError: false,
+      macros: macros,
+      fleqn: false
+     });
+  }}});
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+  <style>
+
+  /* ---
+   * fixDefault.css - A fix to default Pandoc's CSS to be 
+   *    correctly displayed on a VS Code preview window,
+   *    and nicely printed on [digital] paper
+   *
+   * Ramon Solano <ramon.solano@gmail.com>
+   *
+   * usage: 
+   *    pandoc ... -H fixDefault.css ...
+   *
+   * V 1.0, Jul/2021
+   * --- 
+   */
+
+  body {
+  	font-family: inherit;
+  	font-size: inherit;
+  	color: inherit;
+  }
+
+  @media print {
+  	html,body {
+  		font-size: 10pt;
+  	}
+  	@page  {  
+  		size: auto;
+  	} 
+  }
+
+  </style>
+  <style>
+
+  /* ---
+   * article.css - A beautiful css to complement Pandoc's own
+   *
+   * Provides:
+   *    - Article-style title and headers
+   *    - Images and tables centered
+   *    - New `<aside>` env (right side)
+   *
+   * Ramon Solano <ramon.solano@gmail.com>
+   *
+   * usage: 
+   *    pandoc ... -H article.css ...
+   * 
+   * V1.0, Jul/2021
+   * ---
+   */
+
+  body {
+  	max-width: 40em;
+     word-wrap: break-word; 
+  }
+
+  header p {
+  	text-align: center;
+  }
+  header p.subtitle {
+  	font-size: 1.2em;
+  	line-height: 1.1em;
+  	margin: 0.5em 2em 2em;
+  /* 
+  	 margin-top: 0.5em;
+  	 margin-bottom: 2em;
+   */
+  }
+  header p.author {
+  	font-size: 1.1em;
+  	line-height: 0.5em;
+  	font-variant-caps: small-caps;
+  }
+  header p.date {
+  	font-size: 0.95em;
+  	margin: 3em;
+  }
+
+  header h1 {
+  	 line-height: 1em;
+  	 margin-bottom: 0em;
+  }
+  /* abstract header */
+  h3:first-child, #abstract {
+  	font-size: 1.2em;
+  	text-align: center;
+  	margin: 0.5em ;
+  }
+
+  /* abstract paragraph */
+  h3:first-child + p, #abstract + p {
+  	font-size: 0.9em;
+  	margin: 0em 4em;
+  	margin-bottom: 3em;
+  }
+
+  h1 {
+    font-size: 1.6em;
+  }
+  h2 {
+    font-size: 1.3em;
+  }
+  h3 {
+    font-size: 1.1em;
+    font-style: italic;
+  }
+  h1, h2, h3, h4 {
+    margin-top: 0.95em;
+    margin-bottom: 0.80em;
+  }
+
+  /* Justify and hyphenate all paragraphs */
+  p {
+    text-align: justify;
+  }
+      
+  /* center tables */
+  table {
+  	display: table;
+  	width: auto;
+  	margin-left: auto;
+  	margin-right: auto;
+  }
+  table caption {
+  	font-size: 0.95em;
+  }
+
+  /* centered figures  */
+  figure {
+    text-align: center;
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
+  }
+  figcaption {
+    font-size: 0.95em;
+  }
+
+  /* lists: increase left margins */
+  ul, ol {
+    padding: 0 0 0 3em;
+  }    
+
+  /* new style: objects (figures, text) right side */
+  aside {
+    font-size: 0.9em;
+    width: 33%;
+    padding: 0 0 0 .8em;
+    margin: 1em 0 1em 1em;
+    float: right;
+  }
+  aside > *:first-child {
+    margin-top: 0;
+  }
+  aside > *:last-child {
+    margin-bottom: 0;
+  }
+
+  pre {
+    font-size: 0.87em;
+    line-height: 1.2em;
+    border: 1px solid #cccccc;
+    background: #f5f2f0;
+    padding: .7em;   
+  }
+
+  :not(pre) > code[class*="sourceCode"],
+  pre[class*="sourceCode"] {
+    background: #f5f2f0;
+  }
+
+  code {
+    color: #92000c;
+    font-size: .9em;
+  }
+
+  pre code {
+    color: unset;
+  }
+
+  a {
+    color: #0050a0;
+  }
+
+  </style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Pandoc Markdown</h1>
+<p class="subtitle">A <code>VSCode</code> extension for wrinting Pandoc Markdown documents using Pandoc</p>
+<p class="author">Dr Taz</p>
+</header>
+<h3 id="abstract">Abstract</h3>
+<p><code>Pandoc Markdown</code> allows writing Markdown documents using Pandoc for both typesetting and real-time preview, with no third party renderers nor CSS files, just Pandoc. As a bonus, a curated <em>Article</em> CSS is provided, which allows producing documents inspired by those produced by the <code>article</code> LaTeX class. This extension requires Pandoc to be available from the command line.</p>
+<h2 id="introducción">1. Introducción</h2>
+<p>Please see <a href="https://pandoc.org/MANUAL.html#pandocs-markdown">Pandoc’s Markdown</a> for detailed documentation about basic and extended Pandoc Markdown.</p>
+<h2 id="pandoc-markdown">2 Pandoc Markdown</h2>
+<h3 id="code">2.1 Code</h3>
+<p>Pre formatted:</p>
+<pre><code>Normal text
+Pre formatted</code></pre>
+<p>Source code:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Python</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="dv">0</span>,np.pi)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;Hi from Python&quot;</span>)</span></code></pre></div>
+<p>And:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">// javascript</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> changeColor <span class="op">=</span> (newColor) <span class="kw">=&gt;</span> {</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> element <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&#39;message&#39;</span>)<span class="op">;</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    element<span class="op">.</span><span class="at">style</span><span class="op">.</span><span class="at">color</span> <span class="op">=</span> newColor<span class="op">;</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<h3 id="columns">2.2 Columns</h3>
+<p>Columns are specified as a <code>&lt;div&gt;</code> of class <code>.columns</code>, which contains another <code>&lt;divs&gt;</code> of <code>&lt;.column&gt;</code> class. <code>&lt;divs&gt;</code> are specified in Pandoc Markdown using at least three colons as <code>:::</code> . For example:</p>
+<pre><code>:::{[#label] .columns [attrs]}
+
+:::{.column width=&quot;45%&quot;}
+First column contents
+:::
+
+:::{.column width=&quot;10%&quot;}
+:::
+
+:::{.column width=&quot;45%&quot;}
+Second Column contents
+:::
+
+:::</code></pre>
+<p>Which produces something as:</p>
+<div class="columns">
+<div class="column" style="width:48%;font-style: italic;">
+<p>1st Column Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+</div><div class="column" style="width:4%;">
+
+</div><div class="column" style="width:48%;background-color:#eee;">
+<p>2nd Column, Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+</div>
+</div>
+<h3 id="tables">2.3 Tables</h3>
+<h4 id="i.-simple">i. Simple</h4>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua (see <a href="#Table1">Table 1</a>).</p>
+<pre><code>incididunt ut labore et dolore magna aliqua (see [Table 1](#Table1)).
+
+: Tabla 1: Tabla simple []{#Table1}
+
+| Syntax    | Description |
+| --------- | ----------- |
+| Header    | Title       |
+| Paragraph | Text        |</code></pre>
+<p>Which renders as:</p>
+<table>
+<caption>Tabla 1: Tabla simple <span id="Table1"></span></caption>
+<thead>
+<tr class="header">
+<th>Syntax</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Header</td>
+<td>Title</td>
+</tr>
+<tr class="even">
+<td>Paragraph</td>
+<td>Text</td>
+</tr>
+</tbody>
+</table>
+<h4 id="ii.-aligned">ii. Aligned</h4>
+<p>Column alignments are determined by the position of the header text relative to the dashed line below it</p>
+<pre><code>: Table 1.1:  Simple table syntax.
+
+Right     Left     Center     Default
+-------     ------ ----------   -------
+12          12      12          12
+123         123     123         123
+1           1       1           1</code></pre>
+<table>
+<caption>Table 1.1: Simple table syntax.</caption>
+<thead>
+<tr class="header">
+<th style="text-align: right;">Right</th>
+<th style="text-align: left;">Left</th>
+<th style="text-align: center;">Center</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">12</td>
+<td style="text-align: left;">12</td>
+<td style="text-align: center;">12</td>
+<td>12</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">123</td>
+<td style="text-align: left;">123</td>
+<td style="text-align: center;">123</td>
+<td>123</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: center;">1</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>Tables using pipes:</p>
+<pre><code>: Table 2: Using pipes and colons
+
+| Left      | Centered | Right       |
+|:--------- |:--------:| -----------:|
+| Header    | Title    | Here&#39;s this |
+| Paragraph | Text     | And more    |</code></pre>
+<p>Which renders as:</p>
+<table>
+<caption>Table 2: Using pipes and colons</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Left</th>
+<th style="text-align: center;">Centered</th>
+<th style="text-align: right;">Right</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Header</td>
+<td style="text-align: center;">Title</td>
+<td style="text-align: right;">Here’s this</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Paragraph</td>
+<td style="text-align: center;">Text</td>
+<td style="text-align: right;">And more</td>
+</tr>
+</tbody>
+</table>
+<p>Or simply:</p>
+<pre><code>: Tabla 2.1: Pipe, simple
+
+Fruit  | Price ($)  | Existence
+-------|-----------:| :-------:
+apple  | 2.05       | 3 box
+pear   | 1.37       | 2 kg</code></pre>
+<table>
+<caption>Tabla 2.1: Pipe, simple</caption>
+<thead>
+<tr class="header">
+<th>Fruit</th>
+<th style="text-align: right;">Price ($)</th>
+<th style="text-align: center;">Existence</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>apple</td>
+<td style="text-align: right;">2.05</td>
+<td style="text-align: center;">3 box</td>
+</tr>
+<tr class="even">
+<td>pear</td>
+<td style="text-align: right;">1.37</td>
+<td style="text-align: center;">2 kg</td>
+</tr>
+</tbody>
+</table>
+<h3 id="small-caps">2.4 Small caps</h3>
+<p>To write small caps, use the smallcaps class:</p>
+<pre><code>This is a  [Small caps text]{.smallcaps} , got it?</code></pre>
+<p>This is a <span class="smallcaps">Small caps text</span> , got it?</p>
+<h3 id="figuras">2.5 Figuras</h3>
+<h4 id="i.-simple-1">i. Simple</h4>
+<pre><code>See [Fig. 1](#fig1)</code></pre>
+<p>See <a href="#fig1">Fig. 1</a></p>
+<pre><code>![Figure 1: A math plot](figs/plot-3d-small.png){#fig1}</code></pre>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+<figure>
+<img src="figs/plot-3d-small.png" id="fig1" alt="Figure 1: A math plot" /><figcaption aria-hidden="true">Figure 1: A math plot</figcaption>
+</figure>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+<h4 id="ii.-with-attributes">ii. With attributes</h4>
+<p>See <a href="#figattrs">Fig. 2</a>.</p>
+<pre><code>![Fig. 2: Image (scaled to width=40% column)](figs/plot-3d-small.png){#figattrs width=40%}</code></pre>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua (see <a href="#figattrs">Fig Attrs</a>).</p>
+<figure>
+<img src="figs/plot-3d-small.png" id="figattrs" style="width:40.0%" alt="Fig. 2: Image (scaled to width=40% column)" /><figcaption aria-hidden="true">Fig. 2: Image (scaled to width=40% column)</figcaption>
+</figure>
+<h3 id="aside-figures-and-text">2.6 Aside figures and text</h3>
+<pre><code>&lt;aside&gt;
+
+![Fig. 3: Aside figure](figs/plot-small.png)
+
+&lt;/aside&gt;</code></pre>
+<aside>
+<figure>
+<img src="figs/plot-small.png" alt="Fig. 3: Aside figure" /><figcaption aria-hidden="true">Fig. 3: Aside figure</figcaption>
+</figure>
+</aside>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Turpis cursus in hac habitasse platea dictumst quisque sagittis. In ornare quam viverra orci. Mauris rhoncus aenean vel elit. Fames ac turpis egestas maecenas pharetra convallis. Mauris nunc congue nisi vitae suscipit tellus mauris a diam.</p>
+<pre><code>&lt;aside&gt;
+This text should be located as an `&lt;aside&gt;` insert (right side).
+&lt;/aside&gt;</code></pre>
+<aside>
+This text should be located as an <code>&lt;aside&gt;</code> insert (right side).
+</aside>
+<p>Fames ac turpis egestas integer eget aliquet nibh praesent tristique. Laoreet suspendisse interdum consectetur libero id faucibus nisl tincidunt. Ornare aenean euismod elementum nisi quis. Ipsum dolor sit amet consectetur adipiscing elit ut. Vitae congue mauris rhoncus aenean vel elit scelerisque.</p>
+<h3 id="math">2.7 Math</h3>
+<p>Use one og the math rendering options, such as <code>--katex</code> , <code>--mathjax</code>, etc.</p>
+<p><span id="xfoo"></span> Dictumst ac turpis egestas integer dictumst quisque sit amet. A paraghrah. See <a href="#ec-2">ec. 2</a></p>
+<p>The formula, <span class="math inline">y=mx+c</span>, is displayed inline. Some symbols and equations (such as <span class="math inline">\sum{x}</span> or <span class="math inline">\frac{1}{2}</span>) are rescaled to prevent disruptions to the regular line spacing.</p>
+<p>For example: <span id="ec-2"></span></p>
+<p><span class="math display">  f(x)  = \sum_{n=0}^{\infty} \frac {f^{(n)}(a)} {n!} (x-a)^n </span></p>
+<dl>
+<dt>where:</dt>
+<dd><span class="math inline">f^{(n)}(a)</span> = the <span class="math inline">k</span>-th derivative of <span class="math inline">f</span> evaluated at point <span class="math inline">a</span>.
+</dd>
+</dl>
+<h3 id="definitions">2.8 Definitions</h3>
+<pre><code>**Term 1:**
+: Definition 1 
+
+**Term 2:**  
+: Definition 2</code></pre>
+<dl>
+<dt><strong>Term 1:</strong></dt>
+<dd>Definition 1
+</dd>
+<dt><strong>Term 2:</strong></dt>
+<dd>Definition 2
+</dd>
+</dl>
+<h3 id="footnotes">2.9 Footnotes</h3>
+<p>Pandoc’s Markdown allows footnotes, using the following syntax:</p>
+<pre><code>Here is a footnote reference[^1], and another one [^longnote].
+
+[^1]: Here is the footnote.
+
+[^longnote]: Here&#39;s one with multiple blocks.</code></pre>
+<p>Here is a footnote reference<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>, and another one<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> .</p>
+<h3 id="citations">2.10 Citations</h3>
+<p>To cite a bibliographic item with an identifier foo <span class="citation" data-cites="janarthanan_prediction_2020">[1]</span>, use the syntax <code>[@foo]</code>. Normal citations should be included in square brackets, with semicolons separating distinct items:</p>
+<pre><code>Blah blah [doe99; smith2000; smith2004].</code></pre>
+<p>How this is rendered depends on the citation style <span class="citation" data-cites="liepmann_tufte_nodate">[2]</span>. In an author-date style. <span class="citation" data-cites="liepmann_tufte_nodate">[2]</span> says good things.</p>
+<p>Citation items may optionally include a prefix, a locator, and a suffix. In</p>
+<pre><code>Blah blah [see @doe99, pp. 33-35 and *passim*; @smith04, chap. 1].</code></pre>
+<p>The first item (<code>@doe99</code>) has prefix see, <code>locator pp. 33-35</code>, and suffix and <em>passim</em>. The second item (<code>@smith04</code>) has locator <code>chap. 1</code> and no prefix or suffix.</p>
+<p>You can also write an author-in-text citation, by omitting the square brackets:</p>
+<pre><code>@smith04 says blah.
+@smith04 [p. 33] says blah.</code></pre>
+<p>This <span class="citation" data-cites="janarthanan_prediction_2020">[1]</span> will cause the author’s name to be rendered, followed by the bibliographical details. Use this form when you want to make the citation the subject of a sentence <span class="citation" data-cites="janarthanan_prediction_2020 liepmann_tufte_nodate">[1], [2]</span>.</p>
+<h2 class="unnumbered" id="references">References</h2>
+<div id="refs" class="references csl-bib-body" role="doc-bibliography">
+<div id="ref-janarthanan_prediction_2020" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[1] </div><div class="csl-right-inline">R. Janarthanan, R. Balamurali, A. Annapoorani, and V. Vimala, <span>“Prediction of rainfall using fuzzy logic,”</span> <em>Materials Today: Proceedings</em>, 2020.</div>
+</div>
+<div id="ref-liepmann_tufte_nodate" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[2] </div><div class="csl-right-inline">D. Liepmann, <span>“Tufte <span>CSS</span>.”</span></div>
+</div>
+</div>
+<section class="footnotes" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1" role="doc-endnote"><p>Here is the footnote.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2" role="doc-endnote"><p>Here’s one with multiple blocks.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+</body>
+</html>

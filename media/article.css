@@ -34,7 +34,7 @@ header p.subtitle {
 	 margin-bottom: 2em;
  */
 }
-	header p.author {
+header p.author {
 	font-size: 1.1em;
 	line-height: 0.5em;
 	font-variant-caps: small-caps;
@@ -62,7 +62,6 @@ h3:first-child + p, #abstract + p {
 	margin-bottom: 3em;
 }
 
-
 h1 {
   font-size: 1.6em;
 }
@@ -82,7 +81,7 @@ h1, h2, h3, h4 {
 p {
   text-align: justify;
 }
-
+    
 /* center tables */
 table {
 	display: table;
@@ -125,7 +124,7 @@ aside > *:last-child {
 }
 
 pre {
-  font-size: .95em;
+  font-size: 0.87em;
   line-height: 1.2em;
   border: 1px solid #cccccc;
   background: #f5f2f0;
@@ -134,16 +133,20 @@ pre {
 
 :not(pre) > code[class*="sourceCode"],
 pre[class*="sourceCode"] {
-	background: #f5f2f0;
+  background: #f5f2f0;
 }
 
 code {
-   color: #92000c;
+  color: #92000c;
+  font-size: .9em;
 }
 
 pre code {
   color: unset;
 }
 
+a {
+  color: #0050a0;
+}
 
 </style>
