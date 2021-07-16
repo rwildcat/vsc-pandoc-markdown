@@ -18,35 +18,38 @@ Requieres [Pandoc] available from command line.
 
 ## Provides
 
-* `Pandoc Markdown: Open Preview`: ([Ctrl-Shft-R] Win / [Cmd-Shft-R] Mac) Renders the current file in editor and opens a live display for showing the results. Result and render are processed by Pandoc.
-* `Pandoc Markdown: Export to HTML`: Exports current file in editor to HTML format. Result will be located in the same directory as source `.md` file.
+* `Pandoc Markdown: Open Preview` - ([Ctrl-Shft-R] Windows / [Cmd-Shft-R] Mac) Renders current MD file in editor using Pandoc and opens/refreshes live preview panel.
+* `Pandoc Markdown: Export to HTML` - Exports current MD file in editor to an HTML file. Result will be located in the same directory as source file, same base name.
+* `article.css` - a CSS file for fine-tuning and extending Pandoc's defaults. Provides centered abstract, tables and figures; less contrasting font sizes, and a new HTML element, `<aside>`, for displaying figures, text and other contents as an insert to the right side of the page column.
 
 ## Extension Settings
 
 This extension contributes the following settings:
 
-* `ArticleStyle`: (boolean) - Set to use the provided `Article` style 
-* `minimumWaitInterval`: (number; default: 750) - The minimum amount of time (in milliseconds) to wait after a pandoc subprocess exits before starting a new one
-* `extraPandocArguments`:(string) - Extra command-line arguments to use when invoking pandoc. Arguments should be separated with spaces
+* `ArticleStyle`: Set to use the provided `Article` style (boolean)
+* `minimumWaitInterval`: Milliseconds to wait after a pandoc subprocess exits before starting a new one (default: 750)
+* `extraPandocArguments`:Extra command-line arguments to use when invoking pandoc. Arguments should be separated with spaces (string)
 
 ## Typical metadata header (YAML)
 
-A common set of metadata variables are as follows:
+A common set of metadata variables is as follows:
 
-      ---
-      title: Lorem ipsum
-      subtitle: Lorem ipsum dolor sit amet consectetur adipiscing
-      author: Dr Taz
-      keywords: Markdown, Pandoc, VSCode
-      bibliography: mybib.bib
-      csl: https://raw.githubusercontent.com/citation-style-language/styles/master/ieee.csl
-      fontsize: 11.5pt
-      mainfont: Arial, Palatino, Georgia, Times
-      ---
+~~~yaml
+---
+title: Lorem ipsum
+subtitle: Lorem ipsum dolor sit amet consectetur adipiscing
+author: Dr Taz
+keywords: Markdown, Pandoc, VSCode
+bibliography: mybib.bib
+csl: https://raw.githubusercontent.com/citation-style-language/styles/master/ieee.csl
+fontsize: 11.5pt
+mainfont: Arial, Palatino, Georgia, Times
+---
+~~~
 
 At least setting `fontsize` and `mainfont` variables is strongly recommended when using Pandoc.
 
-For a review of all metadata variables available, please see Pandoc's reference [yaml_metadata_block], [Metadata variables], [Language variables] and [Variables for HTML].
+For a review of all metadata variables available, please see Pandoc's reference sections [YAML_metadata_block], [Metadata variables], [Language variables] and [Variables for HTML].
 
 Please note that the YAML metadata block must occur at the beginning of the document (and there can be only one). If multiple files are given as arguments to pandoc, only the first can be a YAML metadata block.
 
@@ -54,32 +57,43 @@ Please note that the YAML metadata block must occur at the beginning of the docu
 
 ![vide](intro.gif)
 
-## Known Issues
+## Demo
+
+A small demo is provided in the extension's [github demo directory](https://github.com/rwildcat/vsc-pandoc-markdown/tree/main/demo) as example.
+
+**NOTE:** Further style editions can be easily done by adding additional CSS content when invoking Pandoc, for example, using the `-H` parameter, as many times as necesary.
+
+## Known Issues 
 
 
 * TBD
 
 ## Acknowledgements
 
-This extension is based on the [Pandoc Markdown Preview] extension by kzvi. Unfortunately, it appears to be outdated and with some issues, such as error accessing local media from the rendered preview.
+* This extension is based on the [Pandoc Markdown Preview] extension by kzvi. Unfortunately, it appears to be outdated and with some issues, such as error accessing local media from the rendered preview.
 
-The *Article* style was inspired by [Tufte CSS] by Dave Liepmann.
+* The *Article* style was inspired by [Tufte CSS] by Dave Liepmann.
 
-[Markdown](https://icons8.com/icon/50145/markdown) icon by [Icons8](https://icons8.com).
+* [Markdown](https://icons8.com/icon/50145/markdown) icon by [Icons8](https://icons8.com).
 
-Thanks!
+Thanks for your great work!
 
 ## Releases
+
+* **0.1.2**, Jul/16/21
+  * Minor tweaks and doc editing
+
+* **0.1.1**, Jul/14/21
+  * Minor CSS tweaks
 
 * **0.1.0**, Jul/13/21
 
    Initial release
 
----
 
 ## For more information
 
-To fully take advantege of the extended Pandoc Markdown version, please see the [Pandoc User’s Guide], especially the [extensions] section and of course the specific [Pandoc’s Markdown] section.
+To fully take advantege of the extended Pandoc Markdown, please see the [Pandoc User’s Guide], especially the [extensions] section and of course the specific [Pandoc’s Markdown] section.
 
 
 ## References
@@ -87,7 +101,7 @@ To fully take advantege of the extended Pandoc Markdown version, please see the 
 * Pandoc: <https://pandoc.org>
 * Pandoc Markdown Preview: <https://marketplace.visualstudio.com/items?itemName=kzvi.pandoc-markdown-preview>
 * Pandoc User’s Guide: <https://pandoc.org/MANUAL.html>
-* extensions: <https://pandoc.org/MANUAL.html#extensions>
+* Pandoc extensions: <https://pandoc.org/MANUAL.html#extensions>
 * Pandoc’s Markdown: <https://pandoc.org/MANUAL.html#pandocs-markdown>
 * Tufte CSS: <https://edwardtufte.github.io/tufte-css/>
 * YAML metadata block: <https://pandoc.org/MANUAL.html#extension-yaml_metadata_block>
@@ -105,7 +119,7 @@ To fully take advantege of the extended Pandoc Markdown version, please see the 
 [extensions]: https://pandoc.org/MANUAL.html#extensions
 [Pandoc’s Markdown]: https://pandoc.org/MANUAL.html#pandocs-markdown
 [Tufte CSS]: https://edwardtufte.github.io/tufte-css/
-[yaml_metadata_block]: https://pandoc.org/MANUAL.html#extension-yaml_metadata_block
+[YAML_metadata_block]: https://pandoc.org/MANUAL.html#extension-yaml_metadata_block
 [Metadata variables]: https://pandoc.org/MANUAL.html#metadata-variables
 [Language variables]: https://pandoc.org/MANUAL.html#language-variables
 [Variables for HTML]: https://pandoc.org/MANUAL.html#variables-for-html
